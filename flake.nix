@@ -12,11 +12,17 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
+      nixpkgs.config.allowUnfree = true;
+
       environment.systemPackages =
         [
           pkgs.kitty
           pkgs.fastfetch
           pkgs.fish
+          pkgs.telegram-desktop
+          pkgs.firefox
+          pkgs.zed-editor
+          pkgs.google-chrome
         ];
 
       fonts.packages =
