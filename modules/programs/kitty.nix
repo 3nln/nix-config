@@ -41,6 +41,5 @@
       "ctrl+shift+left" = "previous_tab";
       "ctrl+shift+right" = "next_tab";
     };
-
   };
 }
