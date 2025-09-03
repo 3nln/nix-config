@@ -105,7 +105,7 @@
       pkgs = import nixpkgs {system = linuxSystem; };
 
       modules = [
-        ./modules/programs/kitty.nix,
+        ./modules/programs/kitty.nix
         ({pkgs, ...}: {
           home.username = "nnolan";
           home.homeDirectory = "/home/nnolan";

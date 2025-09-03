@@ -7,7 +7,10 @@
       size = 18;
     };
 
-    themeFile = null;
+    extraConfig = ''
+       include ~/.config/kitty/themes/OneDark-Pro.conf
+    '';
+
 
     settings = {
       # Window appearance
