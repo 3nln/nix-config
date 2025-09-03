@@ -7,7 +7,7 @@
       size = 18;
     };
 
-    theme = null;
+    themeFile = null;
 
     settings = {
       # Window appearance

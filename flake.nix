@@ -85,6 +85,7 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
+            backupFileExtension = "backup";
             users.neo = {
               home.username = "neo";
               home.homeDirectory = "/Users/neo";
