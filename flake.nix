@@ -66,7 +66,6 @@
         {
           nixpkgs.hostPlatform = macSystem;
           nix.settings.experimental-features = "nix-command flakes";
-
           environment.systemPackages = with import nixpkgs { system = macSystem; };[
             kitty
             fastfetch
@@ -74,20 +73,22 @@
             fish
             firefox
             zed-editor
-            google-chrome
+            # google-chrome
           ];
-
           system.stateVersion = 6;
+           users.users.neo = {
+             home = "/Users/neo";
+           };
         }
-
-        home-manager.darwinModules.home-manager  {
+        home-manager.darwinModules.home-manager  
+        {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             users.neo = {
               home.username = "neo";
               home.homeDirectory = "/Users/neo";
-              home.stateVersion = "24.05";
+              home.stateVersion = "25.05";
 
               programs.fish.enable = true;
               programs.kitty.enable = true;
