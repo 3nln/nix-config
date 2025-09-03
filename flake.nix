@@ -7,6 +7,7 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -101,7 +102,7 @@
       pkgs = import nixpkgs {system = linuxSystem; };
 
       modules = [
-        ({pkgs, import, ...}: {
+        ({pkgs, ...}: {
           home.username = "nnolan";
           home.homeDirectory = "/home/nnolan";
           home.stateVersion = "24.05";
@@ -110,6 +111,11 @@
           programs.fish.enable = true;
 
           programs.kitty.enable = true;
+          programs.kitty.settings = {
+            allow_remote_control = true;
+            font_size = 12;
+          };
+
           
           home.packages = [
             pkgs.kitty
