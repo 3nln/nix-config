@@ -78,19 +78,20 @@
           ];
 
           system.stateVersion = 6;
-          
         }
 
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.neo = {
-            home.username = "neo";
-            home.homeDirectory = "/Users/neo";
-            home.stateVersion = "24.05";
+        home-manager.darwinModules.home-manager  {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.neo = {
+              home.username = "neo";
+              home.homeDirectory = "/Users/neo";
+              home.stateVersion = "24.05";
 
-            programs.fish.enable = true;
-            programs.kitty.enable = true;
+              programs.fish.enable = true;
+              programs.kitty.enable = true;
+            };
           };
         }
        ];
