@@ -7,7 +7,7 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,7 +62,7 @@
 
     # macos
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
-      modules = [ 
+      modules = [
         {
           nixpkgs.hostPlatform = macSystem;
           nix.settings.experimental-features = "nix-command flakes";
@@ -80,7 +80,7 @@
              home = "/Users/neo";
            };
         }
-        home-manager.darwinModules.home-manager  
+        home-manager.darwinModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -92,7 +92,8 @@
               home.stateVersion = "25.05";
 
               programs.fish.enable = true;
-              imports = [ ./modules/programs/kitty.nix ];
+              # imports = [ ./modules/programs/kitty.nix ];
+              imports = [ ./modules/programs/zed.nix ];
             };
           };
         }
