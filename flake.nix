@@ -93,7 +93,7 @@
 
               programs.fish.enable = true;
               # imports = [ ./modules/programs/kitty.nix ];
-              imports = [ ./modules/programs/zed.nix ];
+              imports = [ ./modules/programs/zed-editor.nix ];
             };
           };
         }
@@ -106,17 +106,18 @@
       pkgs = import nixpkgs {system = linuxSystem; };
 
       modules = [
-        ./modules/programs/kitty.nix
+        # ./modules/programs/kitty.nix
+        ./modules/programs/zed-editor.nix
         ({pkgs, ...}: {
           home.username = "nnolan";
           home.homeDirectory = "/home/nnolan";
           home.stateVersion = "24.05";
 
-          programs.fish.enable = true;
+          # programs.fish.enable = true;
 
-          home.packages = [
-            pkgs.kitty
-          ];
+          # home.packages = [
+          #   pkgs.kitty
+          # ];
         })
       ];
     };
