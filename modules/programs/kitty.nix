@@ -1,3 +1,4 @@
+{ config, pkgs, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -11,8 +12,11 @@
        include ~/.config/kitty/themes/OneDark-Pro.conf
     '';
 
+    shellIntegration.enableFishIntegration = true;
 
     settings = {
+      shell = "${pkgs.fish}/bin/fish";
+
       # Window appearance
       background_opacity = "0.95";
       cursor_shape = "beam";

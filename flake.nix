@@ -67,10 +67,10 @@
           nixpkgs.hostPlatform = macSystem;
           nix.settings.experimental-features = "nix-command flakes";
           environment.systemPackages = with import nixpkgs { system = macSystem; };[
-            kitty
             fastfetch
             telegram-desktop
             fish
+            kitty
             firefox
             zed-editor
             # google-chrome
@@ -92,8 +92,7 @@
               home.stateVersion = "25.05";
 
               programs.fish.enable = true;
-              # imports = [ ./modules/programs/kitty.nix ];
-              imports = [ ./modules/programs/zed-editor.nix ];
+              imports = [  ./modules/programs/kitty.nix ./modules/programs/zed-editor.nix ];
             };
           };
         }
