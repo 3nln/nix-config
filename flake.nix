@@ -67,10 +67,10 @@
           nixpkgs.hostPlatform = macSystem;
           nix.settings.experimental-features = "nix-command flakes";
           environment.systemPackages = with import nixpkgs { system = macSystem; };[
+            kitty
             fastfetch
             telegram-desktop
             fish
-            kitty
             firefox
             zed-editor
             # google-chrome
