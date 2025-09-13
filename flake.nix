@@ -81,9 +81,6 @@
           home.username = "nnolan";
           home.homeDirectory = "/home/nnolan";
           home.stateVersion = "24.05";
-
-          # programs.fish.enable = true;
-
           # home.packages = [
           #   pkgs.kitty
           # ];
