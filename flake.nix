@@ -73,6 +73,7 @@
             fish
             firefox
             zed-editor
+            vscode
             # google-chrome
           ];
           system.stateVersion = 6;
