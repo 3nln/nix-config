@@ -12,59 +12,24 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-vscode-extensions }:
   let
     macSystem = "aarch64-darwin";
     linuxSystem = "x86_64-linux";
-
-    # configuration = { pkgs, ... }: {
-    #   # List packages installed in system profile. To search by name, run:
-    #   # $ nix-env -qaP | grep wget
-    #   nixpkgs.config.allowUnfree = true;
-
-    #   environment.systemPackages =
-    #     [
-    #       pkgs.kitty
-    #       pkgs.fastfetch
-    #       pkgs.fish
-    #       pkgs.telegram-desktop
-    #       pkgs.firefox
-    #       pkgs.zed-editor
-    #       pkgs.google-chrome
-    #     ];
-
-    #   fonts.packages =
-    #   [
-    #     pkgs.nerd-fonts.jetbrains-mono
-    #   ];
-
-    #   # Necessary for using flakes on this system.
-    #   nix.settings.experimental-features = "nix-command flakes";
-
-    #   # Enable alternative shell support in nix-darwin.
-    #   # programs.fish.enable = true;
-
-    #   # Set Git commit hash for darwin-version.
-    #   system.configurationRevision = self.rev or self.dirtyRev or null;
-
-    #   # Used for backwards compatibility, please read the changelog before changing.
-    #   # $ darwin-rebuild changelog
-    #   system.stateVersion = 6;
-
-    #   # The platform the configuration will be used on.
-    #   nixpkgs.hostPlatform = "aarch64-darwin";
-    # };
-
+    overlays = [
+       nix-vscode-extensions.overlays.default
+     ];
   in
   {
-
     # macos
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
       modules = [
         {
           nixpkgs.hostPlatform = macSystem;
+          nixpkgs.config.allowUnfree = true;
           nix.settings.experimental-features = "nix-command flakes";
           environment.systemPackages = with import nixpkgs { system = macSystem; };[
             kitty
@@ -100,14 +65,18 @@
        ];
     };
 
-
     # arch
     homeConfigurations."neo" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {system = linuxSystem; };
+      pkgs = import nixpkgs {
+        system = linuxSystem;
+        overlays = overlays;
+        config.allowUnfree = true;
+      };
 
       modules = [
         # ./modules/programs/kitty.nix
         ./modules/programs/zed-editor.nix
+        ./modules/programs/vscode.nix
         ({pkgs, ...}: {
           home.username = "nnolan";
           home.homeDirectory = "/home/nnolan";
