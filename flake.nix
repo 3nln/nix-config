@@ -28,10 +28,19 @@
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
       modules = [
         {
-          nixpkgs.hostPlatform = macSystem;
-          nixpkgs.config.allowUnfree = true;
+          nixpkgs = {
+            hostPlatform = macSystem;
+            overlays = overlays;
+            config.allowUnfree = true;
+          };
           nix.settings.experimental-features = "nix-command flakes";
-          environment.systemPackages = with import nixpkgs { system = macSystem; };[
+          environment.systemPackages = with import nixpkgs { 
+            system = macSystem; 
+             config = {
+          allowUnfree = true;
+          allowUnfreePredicate = _: true;
+        };
+            };[
             kitty
             fastfetch
             telegram-desktop
@@ -58,7 +67,11 @@
               home.stateVersion = "25.05";
 
               programs.fish.enable = true;
-              imports = [  ./modules/programs/kitty.nix ./modules/programs/zed-editor.nix ];
+              imports = [  
+                ./modules/programs/kitty.nix 
+                ./modules/programs/zed-editor.nix
+                ./modules/programs/vscode.nix
+              ];
             };
           };
         }
