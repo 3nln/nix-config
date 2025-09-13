@@ -48,6 +48,7 @@
                   allowUnfree = true;
                   allowUnfreePredicate = _: true;
                   allowUnsupportedSystem = true;
+                  allowBroken = true;
                 };
               }; [
                 kitty
@@ -60,7 +61,7 @@
                 flameshot
                 vlc
                 postman
-                google-chrome
+                # google-chrome
               ];
             system.stateVersion = 6;
             users.users.neo = {

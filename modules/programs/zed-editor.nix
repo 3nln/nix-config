@@ -30,15 +30,70 @@
     ];
 
     userSettings = {
+      auto_update = false;
+      disable_ai = true;
+
+      telemetry = {
+        metrics = false;
+        diagnostics = false;
+      };
+
+      show_edit_predictions = false;
+
+      node = {
+        path = lib.getExe pkgs.nodejs;
+        npm_path = lib.getExe' pkgs.nodejs "npm";
+      };
+
+      languages = {
+        Markdown = {
+          format_on_save = "on";
+          use_on_type_format = true;
+          remove_trailing_whitespace_on_save = true;
+        };
+
+        Nix = {
+          formatter = "language_server";
+          language_servers = [
+            "nixd"
+            "!nil"
+          ];
+        };
+
+        TypeScript = {
+          language_servers = [
+            "typescript-language-server"
+            "deno"
+            "!vtsls"
+            "!eslint"
+          ];
+          formatter = "language_server";
+        };
+
+        TSX = {
+          language_servers = [
+            "typescript-language-server"
+            "deno"
+            "!eslint"
+            "!vtsls"
+          ];
+          formatter = "language_server";
+        };
+      };
+
+      collaboration_panel = {
+        button = false;
+      };
+
       icon_theme = "VSCode Great Icons Theme";
       autosave = "on_focus_change";
 
       agent = {
         enabled = false;
-        # default_model = {
-        #   provider = "zed.dev";
-        #   model = "claude-3-7-sonnet-latest";
-        # };
+      };
+
+      chat_panel = {
+        button = "never";
       };
 
       vim_mode = false;
@@ -71,7 +126,12 @@
         dock = "bottom";
         detect_venv = {
           on = {
-            directories = [ ".env" "env" ".venv" "venv" ];
+            directories = [
+              ".env"
+              "env"
+              ".venv"
+              "venv"
+            ];
             activate_script = "default";
           };
         };
@@ -101,6 +161,36 @@
               includeInlayPropertyDeclarationTypeHints = true;
               includeInlayFunctionLikeReturnTypeHints = true;
               includeInlayEnumMemberValueHints = true;
+            };
+          };
+        };
+
+        nixd = {
+          binary = {
+            ignore_system_version = false;
+          };
+          settings = {
+            formatting = {
+              command = [
+                "alejandra"
+              ];
+            };
+            diagnostic = {
+              suppress = [
+                "sema-extra-with"
+                "sema-extra-rec"
+              ];
+            };
+          };
+        };
+
+        rust-analyzer = {
+          binary = {
+            ignore_system_version = false;
+          };
+          initialization_options = {
+            check = {
+              command = "clippy";
             };
           };
         };
