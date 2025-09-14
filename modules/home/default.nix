@@ -1,8 +1,8 @@
 {
-  zed-editor = import "./zed";
-  vscode = import "./vscode";
-  ssh = import "./ssh";
-  kitty = import "./kitty";
-  git = import "./git";
-  fastfetch = import "./fastfetch";
+  zed-editor = import ./zed-editor;
+  vscode = import ./vscode;
+  ssh = import ./ssh;
+  kitty = import ./kitty;
+  git = import ./git;
+  fastfetch = import ./fastfetch;
 }

@@ -1,15 +1,20 @@
-{ pkgs, ... }:
-
+{ ... }:
+let
+  homeModules = ./modules/home;
+in
 {
   home.username = "neo";
   home.homeDirectory = "/Users/neo";
   home.stateVersion = "25.05";
 
-  programs.fish.enable = true;
+  programs.home-manager.enable = true;
 
   imports = [
-    ../modules/programs/kitty.nix
-    ../modules/programs/vscode.nix
-    ../modules/programs/zed-editor.nix
+    homeModules.fastfetch
+    homeModules.git
+    homeModules.kitty
+    homeModules.vscode
+    homeModules.zed-editor
+    homeModules.ssh
   ];
 }

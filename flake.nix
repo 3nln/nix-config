@@ -1,5 +1,5 @@
 {
-  description = "Your new nix config";
+  description = "nnix config";
 
   inputs = {
     # Nixpkgs
@@ -8,7 +8,7 @@
     # Nix-darwin for macOS systems management
     nix-darwin = {
       url = "github:xinux-org/nix-darwin/nix-darwin-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # You can access packages and modules from different nixpkgs revs
@@ -61,7 +61,7 @@
       overlays = import ./overlays { inherit inputs; };
       nixosModules = import ./modules/nixos;
       darwinModules = import ./modules/darwin;
-      homeManagerModules = import ./modules/home-manager;
+      homeModules = import ./modules/home;
 
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#neo'
@@ -70,7 +70,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./nixos/configuration.nix
+            ./modules/nixos/configuration.nix
           ];
         };
       };
@@ -79,12 +79,12 @@
       darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./darwin/configuration.nix
+          ./modules/darwin/configuration.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.neo = import ./home-manager/home.nix;
+            home-manager.users.neo = import ./home.nix;
           }
         ];
       };
@@ -99,7 +99,7 @@
         };
         extraSpecialArgs = { inherit inputs outputs; };
         modules = [
-          ./home-manager/home.nix
+          ./home.nix
         ];
       };
     };
