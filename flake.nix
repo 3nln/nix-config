@@ -38,7 +38,6 @@
             nixpkgs = {
               hostPlatform = macSystem;
               overlays = overlays;
-              config.allowUnfree = true;
             };
             nix.settings.experimental-features = "nix-command flakes";
             environment.systemPackages =
