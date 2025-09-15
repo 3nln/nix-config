@@ -77,7 +77,7 @@
 
       # macOS konfiguratsiyasi
       darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgs; };
         modules = [
           ./modules/darwin/configuration.nix
           home-manager.darwinModules.home-manager

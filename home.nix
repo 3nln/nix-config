@@ -1,6 +1,6 @@
 { ... }:
 let
-  homeModules = ./modules/home;
+  homeModules = import ./modules/home;
 in
 {
   home.username = "neo";
