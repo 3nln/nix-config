@@ -15,6 +15,6 @@ in
     homeModules.kitty
     homeModules.vscode
     homeModules.zed-editor
-    homeModules.ssh
+    # homeModules.ssh
   ];
 }

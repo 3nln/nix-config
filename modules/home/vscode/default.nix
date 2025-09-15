@@ -10,7 +10,7 @@
         # User settings
         userSettings = {
           "files.autoSave" = "afterDelay";
-          "editor.fontSize" = 18;
+          "editor.fontSize" = 20;
           "editor.fontFamily" = "JetBrains Mono, monospace";
           "editor.fontLigatures" = true;
           "editor.formatOnSave" = true;
