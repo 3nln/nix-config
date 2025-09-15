@@ -1,7 +1,15 @@
-{ pkgs, ... }:
+{ pkgs, inputs, outputs, ... }:
 
 {
   nixpkgs.hostPlatform = "aarch64-darwin";
+  
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+  
+  # Apply overlays from the overlays folder
+  nixpkgs.overlays = [
+    outputs.overlays.vscode-extensions
+  ];
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -11,7 +19,6 @@
     kitty
     fastfetch
     firefox
-    vlc
     postman
     zed-editor
     vscode

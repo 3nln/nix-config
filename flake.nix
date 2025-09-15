@@ -47,8 +47,6 @@
       # This is a function that generates an attribute by calling a function you
       # pass to it, with each system as an argument
       forAllSystems = nixpkgs.lib.genAttrs systems;
-
-      overlays = [ nix-vscode-extensions.overlays.default ];
     in
     {
       # Your custom packages
@@ -70,14 +68,14 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; };
           modules = [
-            ./modules/nixos/configuration.nix
+            ./nixos/configuration.nix
           ];
         };
       };
 
       # macOS konfiguratsiyasi
       darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs pkgs; };
+        specialArgs = { inherit inputs outputs; };
         modules = [
           ./modules/darwin/configuration.nix
           home-manager.darwinModules.home-manager
@@ -94,7 +92,6 @@
       homeConfigurations."neo" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
-          overlays = overlays;
           config.allowUnfree = true;
         };
         extraSpecialArgs = { inherit inputs outputs; };
