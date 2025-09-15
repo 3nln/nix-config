@@ -108,7 +108,7 @@
 
       features = {
         edit_prediction_provider = "none";
-        copilot = true;
+        copilot = false;
       };
 
       edit_predictions = {

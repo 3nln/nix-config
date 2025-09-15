@@ -7,12 +7,14 @@
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ed25519_personal";
+        identitiesOnly = true;
       };
 
       "github.com-unical" = {
         hostname = "github.com";
         user = "git";
         identityFile = "~/.ssh/id_ed25519_unical";
+        identitiesOnly = true;
       };
     };
   };
