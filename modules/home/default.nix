@@ -5,4 +5,6 @@
   kitty = import ./kitty;
   git = import ./git;
   fastfetch = import ./fastfetch;
+  fish = import ./fish;
+  fnm = import ./fnm;
 }

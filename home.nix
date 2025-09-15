@@ -9,6 +9,13 @@ in
 
   programs.home-manager.enable = true;
 
+  # Install Node.js and related tools
+  home.packages = with pkgs; [
+    nodejs
+    nodePackages.npm
+    nodePackages.pnpm
+  ];
+
   imports = [
     homeModules.fastfetch
     homeModules.git
@@ -16,5 +23,6 @@ in
     homeModules.vscode
     homeModules.zed-editor
     homeModules.ssh
+    homeModules.fish
   ];
 }

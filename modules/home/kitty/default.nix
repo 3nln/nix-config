@@ -15,7 +15,7 @@
     shellIntegration.enableFishIntegration = true;
 
     settings = {
-      shell = "${pkgs.fish}/bin/fish";
+      shell = "${pkgs.fish}/bin/fish -l";
 
       # Window appearance
       background_opacity = "0.95";
