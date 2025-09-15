@@ -14,6 +14,7 @@ in
     nodejs
     nodePackages.npm
     nodePackages.pnpm
+    nodePackages.yarn
   ];
 
   imports = [
