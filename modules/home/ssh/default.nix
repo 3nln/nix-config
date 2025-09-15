@@ -9,10 +9,10 @@
         identityFile = "~/.ssh/id_ed25519_personal";
       };
 
-      "github.com-work" = {
+      "github.com-unical" = {
         hostname = "github.com";
         user = "git";
-        identityFile = "~/.ssh/id_ed25519_work";
+        identityFile = "~/.ssh/id_ed25519_unical";
       };
     };
   };
