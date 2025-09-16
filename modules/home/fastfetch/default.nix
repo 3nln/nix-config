@@ -7,15 +7,15 @@
         source = ./logo;
         padding = {
           top = 3;
-          right = 3;
+          right = 5;
           left = 3;
         };
       };
       display = {
         size = {
-      binaryPrefix = "si";
+        binaryPrefix = "si";
+      };
     };
-        };
       modules = [
         {
           type = "datetime";
