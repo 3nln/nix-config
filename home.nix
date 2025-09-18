@@ -11,10 +11,14 @@ in
 
   # Install Node.js and related tools
   home.packages = with pkgs; [
+    # Frontend
     nodejs
     nodePackages.npm
     nodePackages.pnpm
     nodePackages.yarn
+
+    # Rust
+    rustup
   ];
 
   imports = [

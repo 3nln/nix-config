@@ -15,6 +15,10 @@
       
       # Set NPM global directory
       set -gx NPM_CONFIG_PREFIX ~/.npm-global
+
+      # pnpm global bin directory
+      set -gx PNPM_HOME $HOME/Library/pnpm
+      set -gx PATH $PNPM_HOME $PATH
     '';
   };
 }
