@@ -9,7 +9,7 @@ in
 
   programs.home-manager.enable = true;
 
-  # Install Node.js and related tools
+  # Install tools and packages
   home.packages = with pkgs; [
     # Frontend
     nodejs
@@ -19,6 +19,9 @@ in
 
     # Rust
     rustup
+
+    # Golang
+    go
   ];
 
   imports = [
