@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
 
@@ -26,7 +24,10 @@
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
           "[nix]" = {
-            "editor.defaultFormatter" = "jnoortheen.nix-ide";
+            "editor.defaultFormatter" = "kamadorueda.alejandra";
+            "editor.formatOnPaste" = true;
+            "editor.formatOnSave" = true;
+            "editor.formatOnType" = false;
           };
         };
 
@@ -62,9 +63,9 @@
           ms-vscode.vscode-typescript-tslint-plugin
           lokalise.i18n-ally
 
+          kamadorueda.alejandra
           jnoortheen.nix-ide
           bbenoist.nix
-          arrterian.nix-env-selector
 
           rust-lang.rust-analyzer
           bungcip.better-toml
@@ -73,7 +74,6 @@
         ];
       };
     };
-
   };
 
   # Nil language server
