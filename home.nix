@@ -32,5 +32,6 @@ in
     homeModules.zed-editor
     homeModules.ssh
     homeModules.fish
+    homeModules.helix
   ];
 }
