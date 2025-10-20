@@ -1,7 +1,10 @@
-# This is just an example, you should generate yours with nixos-generate-config and put it in here.
+# Hardware configuration for NixOS
+# This file should be generated with: nixos-generate-config --show-hardware-config > hardware-configuration.nix
 {
+  # Bootloader configuration
   boot.loader.systemd-boot.enable = true;
 
+  # File systems
   fileSystems."/" = {
     device = "/dev/sda1";
     fsType = "ext4";
