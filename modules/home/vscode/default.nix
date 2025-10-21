@@ -8,7 +8,8 @@
         # User settings
         userSettings = {
           "files.autoSave" = "afterDelay";
-          "editor.fontSize" = 24;
+          "editor.fontSize" = 20;
+          "window.zoomLevel" = 1;
           "editor.fontFamily" = "JetBrains Mono, monospace";
           "editor.fontLigatures" = true;
           "editor.formatOnSave" = true;

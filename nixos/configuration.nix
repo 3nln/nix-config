@@ -25,7 +25,6 @@
     };
 
   networking.hostName = "nixos";
-  networking.wireless.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
