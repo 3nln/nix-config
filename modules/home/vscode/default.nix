@@ -20,6 +20,14 @@
           "github.copilot-chat.enable" = false;
           "chat.disableAIFeatures" = true;
 
+          # Terminal settings
+          "terminal.integrated.defaultProfile.osx" = "fish";
+          "terminal.integrated.profiles.osx" = {
+            "fish" = {
+              "path" = "/run/current-system/sw/bin/fish";
+            };
+          };
+
           # Nix IDE + Nil
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
