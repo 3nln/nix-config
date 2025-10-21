@@ -35,11 +35,11 @@
   };
 
     nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 10d";
-    };
+        settings.experimental-features = [ "nix-command" "flakes" ];
+        # gc = {
+        # automatic = true;
+        # options = "--delete-older-than 10d";
+        # };
     };
 
   networking.hostName = "nixos";
@@ -58,7 +58,7 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   # AMD GPU configuration
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       amdvlk
@@ -80,7 +80,7 @@
   };
 
   # Enable automatic login for better gaming experience
-  services.xserver.displayManager.autoLogin = {
+  services.displayManager.autoLogin = {
     enable = true;
     user = "neo";
   };
