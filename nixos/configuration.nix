@@ -16,9 +16,15 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix = {
+    settings.experimental-features = [ "nix-command" "flakes" ];
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 10d";
+    };
+    };
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   networking.wireless.enable = true;
 
   # Enable networking
@@ -70,9 +76,6 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
     useUserPackages = true;
     users.neo = import ../home.nix;
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
