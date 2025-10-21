@@ -16,6 +16,9 @@ in
 
   # Install tools and packages
   home.packages = with pkgs; [
+    # tools
+    btop
+
     # Frontend
     nodejs
     nodePackages.npm
