@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   # Apply overlays from the overlays folder
@@ -72,7 +73,7 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.neo = {
     isNormalUser = true;
     description = "neo";
@@ -80,6 +81,13 @@ nix.settings.experimental-features = [ "nix-command" "flakes" ];
     packages = with pkgs; [
     #  thunderbird
     ];
+  };
+
+  # Home Manager configuration
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.neo = import ../home.nix;
   };
 
   # Install firefox.
