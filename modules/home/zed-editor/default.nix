@@ -119,7 +119,9 @@
       };
 
       terminal = {
-        shell = "system";
+        shell = {
+          program = "fish";
+        };
         alternate_scroll = "off";
         blinking = "off";
         copy_on_select = false;
