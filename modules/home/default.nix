@@ -8,4 +8,5 @@
   fish = import ./fish;
   helix = import ./helix;
   telegram = import ./telegram;
+  jetbrains = import ./jetbrains;
 }

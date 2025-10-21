@@ -39,5 +39,6 @@ in
     homeModules.fish
     homeModules.helix
     homeModules.telegram
+    homeModules.jetbrains
   ];
 }
