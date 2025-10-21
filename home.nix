@@ -33,7 +33,7 @@ in
     homeModules.fastfetch
     homeModules.git
     homeModules.kitty
-   # homeModules.vscode
+    homeModules.vscode
     homeModules.zed-editor
     homeModules.ssh
     homeModules.fish
