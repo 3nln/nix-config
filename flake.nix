@@ -101,7 +101,6 @@
         extraSpecialArgs = { inherit inputs outputs; };
         modules = [
           ./home.nix
-	# ./nixos/configuration.nix
         ];
       };
     };
