@@ -15,7 +15,7 @@
   # Bootloader configuration for Gigabyte Z590
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # Boot configuration optimizations
   boot.kernelParams = [
     "amd_iommu=on"
@@ -23,7 +23,7 @@
     "pci=realloc"
     "video=DP-1:2560x1080@75"  # For LG 29" ultrawide
   ];
-  
+
   # Enable kernel hardening and memory optimizations
   boot.kernel.sysctl = {
     "kernel.unprivileged_bpf_disabled" = 1;
@@ -56,15 +56,11 @@
   # Enable the X11 windowing system with AMD GPU support
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
-  
+
   # AMD GPU configuration
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
-      rocm-opencl-icd
-      rocm-opencl-runtime
       amdvlk
     ];
     extraPackages32 = with pkgs; [
@@ -82,13 +78,7 @@
     variant = "";
     options = "compose:rctrl";
   };
-  
-  # Display configuration for LG 29" ultrawide (2560x1080)
-  services.xserver.resolution = {
-    x = 2560;
-    y = 1080;
-  };
-  
+
   # Enable automatic login for better gaming experience
   services.xserver.displayManager.autoLogin = {
     enable = true;
@@ -111,13 +101,13 @@
   users.users.neo = {
     isNormalUser = true;
     description = "neo";
-    extraGroups = [ 
-      "networkmanager" 
-      "wheel" 
-      "video" 
-      "audio" 
-      "games" 
-      "input" 
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "audio"
+      "games"
+      "input"
       "render"
     ];
     packages = with pkgs; [];
@@ -136,7 +126,7 @@
   # System packages optimized for gaming and development
   environment.systemPackages = with pkgs; [
     home-manager
-    
+
     # Gaming essentials
     steam
     lutris
@@ -145,55 +135,50 @@
     vulkan-tools
     vulkan-loader
     vulkan-validation-layers
-    
+
     # AMD GPU tools
     radeontop
-    rocm-smi
     mesa-demos
-    
+
     # Performance monitoring
-    htop
-    nvtop
     cpupower-gui
-    
+
     vim
     nano
     curl
     wget
-    
+
     # Media and codecs
     ffmpeg
-    vlc
-    gstreamer
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base
     gst_all_1.gst-plugins-good
     gst_all_1.gst-plugins-bad
     gst_all_1.gst-plugins-ugly
   ];
-  
+
   # Performance optimizations for i7-11700K
   powerManagement.cpuFreqGovernor = "performance";
-  
+
   # Enable CPU frequency scaling
   services.thermald.enable = true;
-  
-  
+
+
   # Enable real-time scheduling for audio
   security.rtkit.enable = true;
-  
+
   # Gaming optimizations
   programs.gamemode.enable = true;
-  
+
   # Enable udev rules for gaming peripherals
   services.udev.extraRules = ''
     # 2E Gaming KG380WL keyboard
     SUBSYSTEM=="usb", ATTRS{idVendor}=="258a", ATTRS{idProduct}=="1007", MODE="0666", GROUP="games"
-    
+
     # AMD GPU
     KERNEL=="kfd", GROUP="render", MODE="0664"
     KERNEL=="dri/*", GROUP="video", MODE="0664"
   '';
-  
+
   system.stateVersion = "25.05";
 }
