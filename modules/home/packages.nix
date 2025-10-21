@@ -14,6 +14,9 @@
     # Media
     vlc
 
+    # Gaming
+    steam
+
     # tools
     btop
 

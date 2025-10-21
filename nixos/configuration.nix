@@ -68,6 +68,9 @@
     ];
   };
 
+  # Steam hardware configuration
+  hardware.steam-hardware.enable = true;
+
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -96,6 +99,9 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  # Enable 32-bit support for Steam
+  hardware.opengl.driSupport32Bit = true;
 
   # Define a user account with gaming groups
   users.users.neo = {
@@ -132,6 +138,11 @@
     vulkan-loader
     vulkan-validation-layers
 
+    # Steam and gaming
+    steam
+    steam-run
+    steam-run-native
+
     # AMD GPU tools
     radeontop
     mesa-demos
@@ -165,6 +176,13 @@
 
   # Gaming optimizations
   programs.gamemode.enable = true;
+  
+  # Steam optimizations
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   # Enable udev rules for gaming peripherals
   services.udev.extraRules = ''
@@ -174,6 +192,14 @@
     # AMD GPU
     KERNEL=="kfd", GROUP="render", MODE="0664"
     KERNEL=="dri/*", GROUP="video", MODE="0664"
+
+    # Steam Controller
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", MODE="0666", GROUP="games"
+    KERNEL=="uinput", MODE="0660", GROUP="games", OPTIONS+="static_node=uinput"
+
+    # Xbox controllers
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", MODE="0666", GROUP="games"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="0e6f", MODE="0666", GROUP="games"
   '';
 
   system.stateVersion = "25.05";
