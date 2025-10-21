@@ -1,10 +1,15 @@
-{pkgs, ... }:
+{pkgs, inputs, outputs, lib, ... }:
 let
   homeModules = import ./modules/home;
+  inherit (pkgs) stdenv;
+ home =
+    if stdenv.hostPlatform.isDarwin
+    then "Users"
+    else "home";
 in
 {
   home.username = "neo";
-  home.homeDirectory = "/Users/neo";
+  home.homeDirectory = "/${home}/neo";
   home.stateVersion = "25.05";
 
   programs.home-manager.enable = true;
@@ -28,7 +33,7 @@ in
     homeModules.fastfetch
     homeModules.git
     homeModules.kitty
-    homeModules.vscode
+   # homeModules.vscode
     homeModules.zed-editor
     homeModules.ssh
     homeModules.fish
