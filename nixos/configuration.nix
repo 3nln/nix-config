@@ -128,10 +128,6 @@
     home-manager
 
     # Gaming essentials
-    steam
-    lutris
-    wine
-    winetricks
     vulkan-tools
     vulkan-loader
     vulkan-validation-layers
