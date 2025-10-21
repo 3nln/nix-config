@@ -7,4 +7,5 @@
   fastfetch = import ./fastfetch;
   fish = import ./fish;
   helix = import ./helix;
+  telegram = import ./telegram;
 }

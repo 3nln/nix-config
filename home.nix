@@ -38,5 +38,6 @@ in
     homeModules.ssh
     homeModules.fish
     homeModules.helix
+    homeModules.telegram
   ];
 }
