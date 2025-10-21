@@ -44,6 +44,7 @@ in
     homeModules.ssh
     homeModules.fish
     homeModules.helix
+    homeModules.firefox
     homeModules.packages
   ];
 }

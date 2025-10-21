@@ -7,5 +7,6 @@
   fastfetch = import ./fastfetch;
   fish = import ./fish;
   helix = import ./helix;
+  firefox = import ./firefox;
   packages = import ./packages.nix;
 }
