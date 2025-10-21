@@ -8,6 +8,8 @@
 
     # dev tools
     jetbrains.webstorm
+    # kitty
+    # kitty-themes
 
     # Media
     vlc

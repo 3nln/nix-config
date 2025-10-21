@@ -8,9 +8,7 @@
       size = 18;
     };
 
-    extraConfig = ''
-      include ~/.config/kitty/themes/OneDark-Pro.conf
-    '';
+    themeFile = "OneDark-Pro";
 
     shellIntegration.enableFishIntegration = true;
 
