@@ -94,6 +94,9 @@
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
+          overlays = [
+            outputs.overlays.vscode-extensions
+          ];
         };
         extraSpecialArgs = { inherit inputs outputs; };
         modules = [
