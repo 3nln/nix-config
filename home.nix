@@ -19,6 +19,9 @@ in
     # tools
     btop
 
+    # Media
+    vlc
+
     # Frontend
     nodejs
     nodePackages.npm
