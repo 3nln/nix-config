@@ -22,6 +22,13 @@
     nodePackages.npm
     nodePackages.pnpm
     nodePackages.yarn
+    typescript
+
+    # Backend
+    nest-cli
+    prisma
+    pgadmin4
+    postgresql_16
 
     # Rust
     rustup
