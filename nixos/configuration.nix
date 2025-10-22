@@ -1,11 +1,15 @@
-{ config, pkgs, inputs, outputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  config,
+  pkgs,
+  inputs,
+  outputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   # Apply overlays from the overlays folder
   nixpkgs.overlays = [
@@ -21,7 +25,7 @@
     "amd_iommu=on"
     "iommu=pt"
     "pci=realloc"
-    "video=DP-1:2560x1080@75"  # For LG 29" ultrawide
+    "video=DP-1:2560x1080@75" # For LG 29" ultrawide
   ];
 
   # Enable kernel hardening and memory optimizations
@@ -34,13 +38,13 @@
     "vm.dirty_background_ratio" = 5;
   };
 
-    nix = {
-        settings.experimental-features = [ "nix-command" "flakes" ];
-        # gc = {
-        # automatic = true;
-        # options = "--delete-older-than 10d";
-        # };
-    };
+  nix = {
+    settings.experimental-features = ["nix-command" "flakes"];
+    # gc = {
+    # automatic = true;
+    # options = "--delete-older-than 10d";
+    # };
+  };
 
   networking.hostName = "nixos";
 
@@ -55,7 +59,7 @@
 
   # Enable the X11 windowing system with AMD GPU support
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = ["amdgpu"];
 
   # AMD GPU configuration
   hardware.graphics = {
@@ -71,9 +75,10 @@
   # Steam hardware configuration
   hardware.steam-hardware.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # Enable the KDE plasma Desktop Environment.
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
 
   # Configure keymap in X11 for 2E Gaming KG380WL
   services.xserver.xkb = {
@@ -170,13 +175,12 @@
   # Enable CPU frequency scaling
   services.thermald.enable = true;
 
-
   # Enable real-time scheduling for audio
   security.rtkit.enable = true;
 
   # Gaming optimizations
   programs.gamemode.enable = true;
-  
+
   # Steam optimizations
   programs.steam = {
     enable = true;

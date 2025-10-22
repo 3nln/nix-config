@@ -25,19 +25,19 @@
           "terminal.integrated.defaultProfile.linux" = "fish";
           "terminal.integrated.defaultProfile.osx" = "fish";
 
-                    "terminal.integrated.profiles.linux" = {
-                      "fish" = {
-                        "path" = "/home/neo/.nix-profile/bin/fish";
-                        "args" = [ ];
-                      };
-                    };
+          "terminal.integrated.profiles.linux" = {
+            "fish" = {
+              "path" = "/etc/profiles/per-user/neo/bin/fish";
+              "args" = [];
+            };
+          };
 
-                    "terminal.integrated.profiles.osx" = {
-                      "fish" = {
-                        "path" = "/etc/profiles/per-user/neo/bin/fish";
-                        "args" = [ ];
-                      };
-                    };
+          "terminal.integrated.profiles.osx" = {
+            "fish" = {
+              "path" = "/home/neo/.nix-profile/bin/fish";
+              "args" = [];
+            };
+          };
 
           # Nix IDE + Nil
           "nix.enableLanguageServer" = true;
