@@ -159,6 +159,7 @@
     nano
     curl
     wget
+    treefmt
 
     # Media and codecs
     ffmpeg
