@@ -32,6 +32,11 @@
     prisma
     pgadmin4
     postgresql_16
+    redis
+    mongodb
+    mongodb-cli
+
+    git
 
     # Rust
     rustup
