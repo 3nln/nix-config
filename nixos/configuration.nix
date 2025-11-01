@@ -96,6 +96,16 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  services.phpuzb-telegram = {
+    enable = true;
+    package = /nix/store/icqchprrbxiwvx7iha5g67dpjydszm9q-phpuzb-telegram-1.0.0;
+    phpPackage = pkgs.php84;
+    environment = {
+      TELEGRAM_BOT_TOKEN = "8021414397:AAFOMQ44KEDxS82MXS-OjXuFemg7ImDRI6w";
+      APP_ENV = "production";
+    };
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   services.pipewire = {
@@ -107,6 +117,9 @@
 
   # Enable 32-bit support for Steam
   hardware.opengl.driSupport32Bit = true;
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # Define a user account with gaming groups
   users.users.neo = {
@@ -120,6 +133,8 @@
       "games"
       "input"
       "render"
+      "libvirtd"
+      "kvm"
     ];
     packages = with pkgs; [];
   };
