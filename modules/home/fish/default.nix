@@ -1,22 +1,22 @@
-{pkgs, ...}: 
-{
+{pkgs, ...}: {
   programs.fish = {
     enable = true;
     generateCompletions = true;
-    
-    interactiveShellInit = ''
-      # Add Nix profile bin directories to PATH
-      set -gx PATH $PATH /etc/profiles/per-user/$USER/bin
-      set -gx PATH $PATH /nix/var/nix/profiles/default/bin
-      set -gx PATH $PATH /run/current-system/sw/bin
- 
-      # Add npm global bin directory to PATH
-      set -gx PATH $PATH ~/.npm-global/bin
-      
-      # Set NPM global directory
-      set -gx NPM_CONFIG_PREFIX ~/.npm-global
 
-      # pnpm global bin directory
+    interactiveShellInit = ''
+      # Add Nix system and user profile bin directories
+      set -gx PATH /run/current-system/sw/bin $PATH
+      set -gx PATH /nix/var/nix/profiles/default/bin $PATH
+      set -gx PATH /etc/profiles/per-user/$USER/bin $PATH
+
+      # Add Cursor CLI and other local binaries
+      set -gx PATH $HOME/.local/bin $PATH
+
+      # Add npm global bin directory
+      set -gx NPM_CONFIG_PREFIX $HOME/.npm-global
+      set -gx PATH $NPM_CONFIG_PREFIX/bin $PATH
+
+      # Add pnpm global bin directory
       set -gx PNPM_HOME $HOME/Library/pnpm
       set -gx PATH $PNPM_HOME $PATH
     '';
