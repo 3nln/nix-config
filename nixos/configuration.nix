@@ -96,15 +96,17 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  services.phpuzb-telegram = {
-    enable = true;
-    package = /nix/store/icqchprrbxiwvx7iha5g67dpjydszm9q-phpuzb-telegram-1.0.0;
-    phpPackage = pkgs.php84;
-    environment = {
-      TELEGRAM_BOT_TOKEN = "8021414397:AAFOMQ44KEDxS82MXS-OjXuFemg7ImDRI6w";
-      APP_ENV = "production";
-    };
-  };
+  programs.appimage.enable = true;
+
+  # services.phpuzb-telegram = {
+  #   enable = true;
+  #   package = /nix/store/icqchprrbxiwvx7iha5g67dpjydszm9q-phpuzb-telegram-1.0.0;
+  #   phpPackage = pkgs.php84;
+  #   environment = {
+  #     TELEGRAM_BOT_TOKEN = "8021414397:AAFOMQ44KEDxS82MXS-OjXuFemg7ImDRI6w";
+  #     APP_ENV = "production";
+  #   };
+  # };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -152,6 +154,7 @@
   # System packages optimized for gaming and development
   environment.systemPackages = with pkgs; [
     home-manager
+    code-cursor
 
     # Gaming essentials
     vulkan-tools
@@ -196,6 +199,17 @@
 
   # Gaming optimizations
   programs.gamemode.enable = true;
+
+  # for dynamic cursor problems
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib 
+    glibc
+    openssl
+    zlib
+  ];
+
 
   # Steam optimizations
   programs.steam = {
