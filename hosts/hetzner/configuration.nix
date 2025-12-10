@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      outputs.nixosModules.system-packages
+      outputs.nixosModules.systemPackages
     ];
 
   # Use the GRUB 2 boot loader.
