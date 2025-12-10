@@ -26,7 +26,7 @@
 
     phpuzb-telegram.url = "github:3nln/php-tg-floss";
     portfolio.url = "git+ssh://git@github.com/3nln/portfolio.git";
-    lerax.url = "git+ssh://git@github.com/3nln/lerax.git";
+    lerax.url = "git+ssh://git@github.com/nnolan-oss/lerax.git";
   };
 
   outputs = {
