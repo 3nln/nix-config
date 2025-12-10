@@ -2,12 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, outputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      outputs.nixosModules.system-packages
     ];
 
   # Use the GRUB 2 boot loader.
@@ -72,10 +73,7 @@
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git
-  ];
+  # System packages are now defined in ../../modules/nixos/system-packages.nix
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
