@@ -35,6 +35,7 @@
     nix-darwin,
     nix-vscode-extensions,
     phpuzb-telegram,
+    portfolio,
     ...
   } @ inputs: let
     inherit (self) outputs;
