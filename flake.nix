@@ -25,7 +25,7 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     phpuzb-telegram.url = "github:3nln/php-tg-floss";
-    portfolio.url = "git+https://github.com/3nln/portfolio";
+    portfolio.url = "git+ssh://git@github.com/3nln/portfolio.git";
   };
 
   outputs = {
