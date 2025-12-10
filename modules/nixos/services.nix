@@ -19,6 +19,16 @@
     # user = "portfolio";
     # group = "portfolio";
   };
+
+  services.lerax = {
+    enable = true;
+    port = 3001;
+    host = "127.0.0.1";
+    proxy = {
+      enable = true;
+      domain = "lerax.nolan.uz";
+    };
+  };
   
   # Make sure nginx is enabled if using proxy
   services.nginx.enable = true;
