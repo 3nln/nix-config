@@ -6,7 +6,6 @@
     git
     treefmt
     alejandra
-    fastfetch
     # Node.js and React development tools
     nodejs
     nodePackages.yarn
