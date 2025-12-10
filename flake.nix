@@ -25,6 +25,7 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     phpuzb-telegram.url = "github:3nln/php-tg-floss";
+    portfolio.url = "git+https://github.com/3nln/portfolio";
   };
 
   outputs = {
@@ -79,6 +80,7 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
+           portfolio.nixosModules.server
           ./hosts/hetzner/configuration.nix
         ];
       };

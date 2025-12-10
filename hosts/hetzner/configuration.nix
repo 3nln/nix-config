@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       outputs.nixosModules.systemPackages
+      outputs.nixosModules.services
     ];
 
   # Use the GRUB 2 boot loader.

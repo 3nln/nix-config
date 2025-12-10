@@ -3,4 +3,5 @@
 {
   # List your module files here
   systemPackages = import ./system-packages.nix;
+  services = import ./services.nix;
 }
