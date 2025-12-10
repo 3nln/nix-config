@@ -2,12 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, outputs, ... }:
+{ config, lib, pkgs, outputs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
       outputs.nixosModules.systemPackages
       outputs.nixosModules.services
     ];
@@ -118,5 +119,19 @@
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
+
+  # Home Manager configuration
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.nixos = {
+      home.username = "nixos";
+      home.homeDirectory = "/home/nixos";
+      home.stateVersion = "25.05";
+      imports = [
+        outputs.homeModules.fastfetch
+      ];
+    };
+  };
 }
 
