@@ -72,6 +72,16 @@
           ./nixos/configuration.nix
         ];
       };
+
+      # Hetzner server configuration
+      # Available through 'nixos-rebuild --flake .#hetzner'
+      hetzner = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/hetzner/configuration.nix
+        ];
+      };
     };
 
     # macOS konfiguratsiyasi
