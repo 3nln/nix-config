@@ -25,8 +25,8 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     phpuzb-telegram.url = "github:3nln/php-tg-floss";
-    # portfolio.url = "git+ssh://git@github.com/3nln/portfolio.git";
-    # lerax.url = "git+ssh://git@github.com/nnolan-oss/lerax.git";
+    portfolio.url = "git+ssh://git@github.com/3nln/portfolio.git";
+    lerax.url = "git+ssh://git@github.com/nnolan-oss/lerax.git";
   };
 
   outputs = {
@@ -36,8 +36,8 @@
     nix-darwin,
     nix-vscode-extensions,
     phpuzb-telegram,
-    # portfolio,
-    # lerax,
+    portfolio,
+    lerax,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -83,8 +83,8 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
-          # portfolio.nixosModules.server
-          # lerax.nixosModules.server
+          portfolio.nixosModules.server
+          lerax.nixosModules.server
           ./hosts/hetzner/configuration.nix
         ];
       };

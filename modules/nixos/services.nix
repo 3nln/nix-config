@@ -36,6 +36,6 @@
   # ACME (Let's Encrypt) configuration for SSL certificates
   security.acme = {
     acceptTerms = true;  # Accept Let's Encrypt terms of service
-    defaults.email = "javohirtech@gmail.com";  # TODO: Replace with your email address
+    defaults.email = "javohirtech@gmail.com"; 
   };
 }
