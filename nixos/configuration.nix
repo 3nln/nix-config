@@ -153,8 +153,8 @@
 
   # System packages optimized for gaming and development
   environment.systemPackages = with pkgs; [
+    fuse2
     home-manager
-    code-cursor
 
     # Gaming essentials
     vulkan-tools
@@ -201,14 +201,45 @@
   programs.gamemode.enable = true;
 
   # for dynamic cursor problems
-  programs.nix-ld.enable = true;
+  # Allow running AppImage / proprietary binaries (Cursor, etc.)
+programs.nix-ld.enable = true;
 
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib 
-    glibc
-    openssl
-    zlib
-  ];
+programs.nix-ld.libraries = with pkgs; [
+  # Core runtime
+  stdenv.cc.cc
+  glibc
+  zlib
+  openssl
+  curl
+
+  # Electron / GTK
+  glib
+  gtk3
+  pango
+  cairo
+  atk
+  gdk-pixbuf
+
+  # X11
+  xorg.libX11
+  xorg.libXcursor
+  xorg.libXrandr
+  xorg.libXi
+  xorg.libXcomposite
+  xorg.libXdamage
+  xorg.libXext
+  xorg.libXfixes
+  xorg.libXrender
+  xorg.libXScrnSaver
+
+  # Graphics / DRM
+  libdrm
+  mesa
+
+  # Audio
+  alsa-lib
+];
+
 
 
   # Steam optimizations
