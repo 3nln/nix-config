@@ -11,6 +11,16 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    portfolio = prev.portfolio.overrideAttrs (oldAttrs: {
+      buildInputs = (oldAttrs.buildInputs or []) ++ [
+        final.nodejs
+      ];
+      # Set environment variable to skip font fetching
+      preBuild = (oldAttrs.preBuild or "") + ''
+        export NEXT_PUBLIC_SKIP_FONTS=true
+        # Or patch the layout.tsx to use local fonts instead
+      '';
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
