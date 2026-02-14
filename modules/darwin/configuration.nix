@@ -11,8 +11,8 @@
     "flakes"
   ];
 
-  users.users.neo = {
-    home = "/Users/neo";
+  users.users.nnolan = {
+    home = "/Users/nnolan";
   };
 
   system.stateVersion = 6;

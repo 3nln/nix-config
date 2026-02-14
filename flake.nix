@@ -2,25 +2,24 @@
   description = "nnix config";
 
   inputs = {
-     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Nix-darwin for macOS systems management
     nix-darwin = {
-      url = "github:xinux-org/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Pin for specific packages if needed
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
 
-    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-darwin, nixpkgs-unstable } @ inputs: let
+  outputs = { self, nixpkgs, home-manager, nix-darwin, nixpkgs-stable } @ inputs: let
     inherit (self) outputs;
     # Supported systems for your flake packages, shell, etc.
     systems = [
@@ -37,6 +36,7 @@
 
     # Darwin configuration entrypoint
     darwinConfigurations."mbp" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
       specialArgs = {inherit inputs outputs;};
       modules = [
         ./modules/darwin/configuration.nix
@@ -44,7 +44,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.neo = import ./home.nix;
+          home-manager.users.nnolan = import ./home.nix;
           home-manager.backupFileExtension = "backup";
         }
       ];

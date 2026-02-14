@@ -14,10 +14,10 @@ default:
 
 # Update inputs + switch (run on the target machine)
 darwin-update-local:
-    sudo nix run nix-darwin -- switch --flake .#mbp --upgrade
+    sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake .#mbp --upgrade
 
 darwin-update-repo:
-    sudo nix run nix-darwin -- switch --flake github:3nln/nix-config#mbp --upgrade
+    sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake github:3nln/nix-config#mbp --upgrade
 
 #   ______            __
 #  /_  __/___  ____  / /____
@@ -27,7 +27,16 @@ darwin-update-repo:
 
 
 switch-darwin:
-    sudo nix run nix-darwin -- switch --flake .#mbp --show-trace
+    sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake .#mbp --show-trace
+
+# Rename conflicting /etc files so nix-darwin can take over (one-time)
+darwin-fix-etc:
+    #!/usr/bin/env bash
+    for f in /etc/nix/nix.conf /etc/bashrc /etc/zshrc; do
+      if [ -f "$f" ]; then
+        sudo mv "$f" "$f.before-nix-darwin" && echo "Renamed $f"
+      fi
+    done
 
 #   ______     __
 #  / __ ) \   / /

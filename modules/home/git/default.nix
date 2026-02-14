@@ -1,8 +1,16 @@
 {
   programs.git = {
     enable = true;
-    userName = "3nln";
-    userEmail = "javohirtech@gmail.com";
+
+    settings = {
+      user = {
+        name = "3nln";
+        email = "javohirtech@gmail.com";
+      };
+      init.defaultBranch = "main";
+      pull.rebase = false;
+      push.autoSetupRemote = true;
+    };
 
     includes = [
       # Personal repos (anything under ~/projects or ~/personal)
@@ -29,11 +37,5 @@
         };
       }
     ];
-
-    extraConfig = {
-      init.defaultBranch = "main";
-      pull.rebase = true;
-      push.autoSetupRemote = true;
-    };
   };
 }

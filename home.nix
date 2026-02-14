@@ -8,17 +8,17 @@ let
     else "home";
 in
 {
-  home.username = "neo";
-  home.homeDirectory = "/${home}/neo";
+  home.username = "nnolan";
+  home.homeDirectory = "/${home}/nnolan";
   home.stateVersion = "25.11";
 
   programs.home-manager.enable = true;
 
   imports = [
     homeModules.fastfetch
-    homeModules.ghostty
+    # homeModules.ghostty
     homeModules.git
-    homeModules.packages
+    # homeModules.packages
     homeModules.ssh
     homeModules.zed-editor
   ];
