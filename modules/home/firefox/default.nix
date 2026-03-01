@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   addons = pkgs.nur.repos.rycee.firefox-addons;
 
   fromAMO = {
@@ -134,7 +130,7 @@ in {
       search = {
         force = true;
         default = "google";
-        privateDefault = "DuckDuckGo";
+        privateDefault = "ddg";
       };
     };
   };

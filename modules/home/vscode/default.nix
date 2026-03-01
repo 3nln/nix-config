@@ -1,14 +1,11 @@
 {
-  config,
   pkgs,
-  lib,
   nix-vscode-extensions,
   ...
 }: let
-  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
   # Use pkgs.vscode on both platforms — no Homebrew dependency
   vscodePackage = pkgs.vscode;
-  vscodeMarketplace = nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
+  vscodeMarketplace = nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
 in {
   programs.vscode = {
     enable = true;

@@ -12,6 +12,7 @@
   imports = [
     ./flutter.nix
     ./homebrew.nix
+    ./wallpaper.nix
   ];
 
   system.primaryUser = "nnolan";
