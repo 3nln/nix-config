@@ -117,6 +117,10 @@ in {
         "datareporting.healthreport.uploadEnabled" = false;
         "browser.crashReports.unsubmittedCheck.autoSubmit2" = false;
 
+        # Vertical tabs (Firefox 131+)
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
+
         # UI
         "browser.startup.page" = 1;
         "browser.newtabpage.enabled" = false;
