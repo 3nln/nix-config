@@ -24,6 +24,7 @@ in {
       nixupgrade = "nix flake update --flake ${flakePath} $1 && nixrebuild";
       nixpull = "cd ${flakePath} && git pull && cd -";
       nixpush = "cd ${flakePath} && git add . && git commit -m \"automatically updated by nixpush\" && git push && cd -";
+      setupskills = "cd ${flakePath} && mkdir -p .github/skills && npx skills add vercel-labs/agent-skills";
     }
   );
 }

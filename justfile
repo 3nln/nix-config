@@ -62,9 +62,8 @@ build-darwin:
 #                ||----w |
 #                ||     ||
 
-# Flutter: apply config (flutter module in home.nix)
-setup flutter:
-    just switch-darwin
+setup-skills:
+    npx skills add vercel-labs/agent-skills
 
 format:
     nix fmt

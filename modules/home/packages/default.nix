@@ -10,6 +10,7 @@ in {
     [
       # Common CLI/dev tools
       btop
+      just
       nixfmt
       rustup
       go
