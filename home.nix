@@ -29,6 +29,7 @@ in {
 
   imports = [
     homeModules.fastfetch
+    homeModules.firefox
     homeModules.flutter
     homeModules.ghostty
     homeModules.git

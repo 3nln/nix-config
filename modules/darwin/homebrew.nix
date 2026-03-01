@@ -15,7 +15,7 @@
       "raycast"
       "github"
       "macs-fan-control"
-      "firefox"
+
       # "vlc"
       # "mongodb-compass"
     ];

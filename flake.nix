@@ -25,6 +25,12 @@
 
     # Manages Homebrew installation itself on macOS
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # Nix User Repository — firefox extensions, etc.
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -35,6 +41,7 @@
     nixpkgs-stable,
     nix-vscode-extensions,
     nix-homebrew,
+    nur,
   } @ inputs: let
     linuxSystem = "x86_64-linux";
     linuxUser = "nnolan";
@@ -96,6 +103,7 @@
           # On Linux (standalone HM), there's no system-level nixpkgs — set here directly.
           nixpkgs.config.allowUnfree = true;
           nixpkgs.config.android_sdk.accept_license = true;
+          nixpkgs.overlays = [nur.overlays.default];
         }
       ];
     };

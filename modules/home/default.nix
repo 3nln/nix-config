@@ -1,5 +1,6 @@
 {
   fastfetch = import ./fastfetch;
+  firefox = import ./firefox;
   vscode = import ./vscode;
   flutter = import ./flutter;
   ghostty = import ./ghostty;
