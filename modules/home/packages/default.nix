@@ -14,14 +14,18 @@ in {
       rustup
       go
       bun
+      # Node.js
+      nodejs
+      nodePackages.npm
+      # Messaging
+      telegram-desktop
       # JetBrains
       jetbrains-toolbox
       jetbrains.webstorm
       jetbrains.rust-rover
+      flameshot
     ]
     ++ lib.optionals isLinux [
-      telegram-desktop
-      flameshot
       # Font: macOS gets this via Homebrew cask font-jetbrains-mono
       jetbrains-mono
     ];
