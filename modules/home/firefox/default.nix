@@ -78,35 +78,37 @@ in {
     enable = true;
 
     profiles.default = {
-      id = 0;
       isDefault = true;
 
-      extensions.packages = with addons; [
-        # Dev tools
-        vue-js-devtools
-        react-devtools
-        locatorjs
+      extensions = {
+        force = true;
+        packages = [
+          # Dev tools (NUR)
+          addons.vue-js-devtools
+          addons.react-devtools
+          locatorjs
 
-        # Design / inspection
-        whatfont # pinned
-        wappalyzer # pinned
-        fake-filler
-        colorzilla # pinned
-        mobile-simulator # pinned
+          # Design / inspection
+          whatfont # pinned — AMO
+          addons.wappalyzer # pinned — NUR
+          addons.fake-filler
+          colorzilla # pinned — AMO
+          mobile-simulator # pinned — AMO
 
-        # Utility
-        temp-mail # pinned
-        cors-everywhere # pinned
-        adguard
-        unhook # pinned
+          # Utility
+          temp-mail # pinned — AMO
+          cors-everywhere # pinned — AMO
+          adguard # AMO
+          unhook # pinned — AMO
 
-        # Content blocking
-        sponsorblock
-        ublock-origin
+          # Content blocking (NUR)
+          addons.sponsorblock
+          addons.ublock-origin
 
-        # System
-        plasma-integration
-      ];
+          # System (NUR)
+          addons.plasma-integration
+        ];
+      };
 
       settings = {
         # Privacy
@@ -127,30 +129,6 @@ in {
         "browser.shell.checkDefaultBrowser" = false;
         "browser.tabs.warnOnClose" = false;
         "browser.toolbars.bookmarks.visibility" = "never";
-
-        # Toolbar layout — pinned extensions in nav-bar
-        "browser.uiCustomization.state" = builtins.toJSON {
-          placements = {
-            nav-bar = [
-              "back-button"
-              "forward-button"
-              "stop-reload-button"
-              "urlbar-container"
-              "downloads-button"
-              "armishiaverduzcot200168_hotmail_com-browser-action" # WhatFont
-              "_a26db6c8-c3a4-4f45-8da2-c9fa17f44148_-browser-action" # Wappalyzer
-              "_6ac85730-7d0f-4de0-b3fa-21142dd85326_-browser-action" # ColorZilla
-              "_edfc63b3-fc9b-4b6b-b9bf-4561ad548044_-browser-action" # Mobile Simulator
-              "_2d97895d-fcd3-41ab-82e6-6a1d4d2243f6_-browser-action" # Temp Mail
-              "cors-everywhere_spenibus-browser-action" # CORS Everywhere
-              "myallychou_gmail_com-browser-action" # Unhook
-              "unified-extensions-button"
-            ];
-            unified-extensions-area = [];
-          };
-          currentVersion = 20;
-          newElementCount = 0;
-        };
       };
 
       search = {
