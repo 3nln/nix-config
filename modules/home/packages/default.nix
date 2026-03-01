@@ -14,6 +14,10 @@ in {
       rustup
       go
       bun
+      # JetBrains
+      jetbrains-toolbox
+      jetbrains.webstorm
+      jetbrains.rust-rover
     ]
     ++ lib.optionals isLinux [
       telegram-desktop
