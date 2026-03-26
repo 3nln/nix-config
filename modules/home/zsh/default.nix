@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   # To manage ZSHThemes.json from this repo, uncomment and add the file to this directory:
   # home.file."ZSHThemes.json" = { source = ./ZSHThemes.json; };
 
@@ -34,6 +29,8 @@
     ];
 
     initContent = ''
+      export PATH="$HOME/.local/bin:$PATH"
+
       # oh-my-posh prompt (skip in Apple Terminal - reserved for Ghostty/other terms)
       if [ "$TERM_PROGRAM" != "Apple Terminal" ] && [ -f "''${HOME}/ZSHThemes.json" ]; then
         eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config "''${HOME}/ZSHThemes.json")"

@@ -24,9 +24,9 @@ in {
           "workbench.colorTheme" = "JetBrains New Dark";
           "git.autofetch" = true;
 
-          # "github.copilot.enable" = false;
-          # "github.copilot-chat.enable" = false;
-          # "chat.disableAIFeatures" = true;
+          "github.copilot.enable" = false;
+          "github.copilot-chat.enable" = false;
+          "chat.disableAIFeatures" = true;
 
           # --- Terminal settings (zsh with Oh My Zsh from modules/home/zsh) ---
           "terminal.integrated.defaultProfile.linux" = "zsh";
@@ -55,6 +55,17 @@ in {
             "editor.formatOnPaste" = true;
             "editor.formatOnSave" = true;
             "editor.formatOnType" = false;
+          };
+
+          "json.schemaDownload.trustedDomains" = {
+            "https://schemastore.azurewebsites.net/" = true;
+            "https://raw.githubusercontent.com/microsoft/vscode/" = true;
+            "https://raw.githubusercontent.com/devcontainers/spec/" = true;
+            "https://www.schemastore.org/" = true;
+            "https://json.schemastore.org/" = true;
+            "https://json-schema.org/" = true;
+            "https://developer.microsoft.com/json-schemas/" = true;
+            "https://biomejs.dev" = true;
           };
         };
 
@@ -108,108 +119,4 @@ in {
     alejandra
     nodejs
   ];
-
-  home.file.".vscode/mcp.json".text = builtins.toJSON {
-    servers = {
-      shadcn = {
-        command = "npx";
-        args = [
-          "shadcn@latest"
-          "mcp"
-        ];
-      };
-
-      mui = {
-        command = "npx";
-        args = [
-          "-y"
-          "@mui/mcp@latest"
-        ];
-      };
-
-      figma = {
-        command = "npx";
-        args = [
-          "-y"
-          "@figma/mcp-server@latest"
-        ];
-        env = {
-          FIGMA_ACCESS_TOKEN = "\${env:FIGMA_ACCESS_TOKEN}";
-        };
-      };
-
-      playwright = {
-        command = "npx";
-        args = [
-          "-y"
-          "@playwright/mcp@latest"
-        ];
-      };
-
-      github = {
-        command = "npx";
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-github@latest"
-        ];
-        env = {
-          GITHUB_PERSONAL_ACCESS_TOKEN = "\${env:GITHUB_PERSONAL_ACCESS_TOKEN}";
-        };
-      };
-
-      chromedevtools = {
-        command = "npx";
-        args = [
-          "-y"
-          "chrome-devtools-mcp@latest"
-        ];
-      };
-
-      notion = {
-        command = "npx";
-        args = [
-          "-y"
-          "@notionhq/notion-mcp-server@latest"
-        ];
-        env = {
-          NOTION_API_KEY = "\${env:NOTION_API_KEY}";
-        };
-      };
-
-      vercel = {
-        command = "npx";
-        args = [
-          "-y"
-          "vercel-mcp@latest"
-        ];
-        env = {
-          VERCEL_TOKEN = "\${env:VERCEL_TOKEN}";
-        };
-      };
-
-      nuxt = {
-        command = "npx";
-        args = [
-          "-y"
-          "nuxt-mcp@latest"
-        ];
-      };
-
-      postman = {
-        command = "npx";
-        args = [
-          "-y"
-          "@postman/mcp-server@latest"
-        ];
-        env = {
-          POSTMAN_API_KEY = "\${env:POSTMAN_API_KEY}";
-        };
-      };
-
-      b24-dev-mcp = {
-        url = "https://mcp-dev.bitrix24.tech/mcp";
-        type = "http";
-      };
-    };
-  };
 }
