@@ -37,7 +37,7 @@ in {
     homeModules.packages
     homeModules.ssh
     homeModules.vscode
-    # homeModules.zed-editor
+    homeModules.zed-editor
     homeModules.zsh
   ];
 }

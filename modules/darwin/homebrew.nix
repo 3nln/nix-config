@@ -15,6 +15,7 @@
       "raycast"
       "github"
       "macs-fan-control"
+      "zed" # nixpkgs zed-editor rebuilds from source on aarch64-darwin (cache miss)
 
       # "vlc"
       # "mongodb-compass"

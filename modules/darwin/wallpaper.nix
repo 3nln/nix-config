@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  wallpaper = ../../wallpaper/blue-abstract-5120x2880-25119.jpg;
+  wallpaper = ../../wallpaper/golden-dark-5120x3835-25333.jpg;
 
   setWallpaperAll = pkgs.writeShellScript "set-wallpaper-all" ''
     /usr/bin/osascript <<'APPLESCRIPT'
