@@ -97,8 +97,8 @@
     };
 
     vim_mode = false;
-    ui_font_size = 20;
-    buffer_font_size = 20;
+    ui_font_size = 14;
+    buffer_font_size = 14;
 
     theme = {
       mode = "system";
@@ -141,7 +141,7 @@
         TERM = "alacritty";
       };
       font_features = null;
-      font_size = 20;
+      font_size = 14;
       line_height = "comfortable";
       option_as_meta = false;
       button = false;
@@ -198,9 +198,9 @@
       };
     };
   };
+  settingsFile = pkgs.writeText "zed-settings.json" (builtins.toJSON settings);
 in {
-  # Zed binary keladi Homebrew cask'dan (modules/darwin/homebrew.nix).
-  # Nix settings.json ni boshqaradi, extensions Zed o'zi auto_install_extensions
-  # orqali ishga tushganda avtomatik o'rnatadi.
-  home.file.".config/zed/settings.json".text = builtins.toJSON settings;
+  home.activation.zedSettings = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    run install -Dm644 $VERBOSE_ARG ${settingsFile} $HOME/.config/zed/settings.json
+  '';
 }
